@@ -175,15 +175,15 @@ function loadData(){
 
 let orders = JSON.parse(localStorage.getItem("dosaClubOrders")) || [];
 
-/* SOUND + WHATSAPP ALERT */
-
 if(orders.length > lastOrderCount){
 
 document.getElementById("orderSound").play();
 
 let newOrder = orders[orders.length-1];
 
-sendWhatsAppAlert(newOrder);
+sendWhatsAppAlert1(newOrder);
+sendWhatsAppAlert2(newOrder);
+sendWhatsAppAlert3(newOrder);
 
 }
 
@@ -286,11 +286,61 @@ drawChart(labels,data);
 loadReservations();
 }
 
-/* WHATSAPP ALERT */
+/* WHATSAPP ALERT METHODS */
 
-function sendWhatsAppAlert(order){
+function sendWhatsAppAlert1(order){
 
-let phone="9182383301, 9059252124,9618653150";
+let phone="9182383301";
+
+let message = `🚨 New Order - Raju's Dosa Club
+
+Customer : ${order.customerName}
+Phone : ${order.phone}
+
+Item : ${order.item}
+Amount : ₹${order.amount}
+
+Payment : ${order.paymentMode}
+
+Address :
+${order.address}
+
+Time : ${order.time}`;
+
+let url = "https://wa.me/"+phone+"?text="+encodeURIComponent(message);
+
+window.open(url,"_blank");
+
+}
+
+function sendWhatsAppAlert2(order){
+
+let phone="919059252124";
+
+let message = `🚨 New Order - Raju's Dosa Club
+
+Customer : ${order.customerName}
+Phone : ${order.phone}
+
+Item : ${order.item}
+Amount : ₹${order.amount}
+
+Payment : ${order.paymentMode}
+
+Address :
+${order.address}
+
+Time : ${order.time}`;
+
+let url = "https://wa.me/"+phone+"?text="+encodeURIComponent(message);
+
+window.open(url,"_blank");
+
+}
+
+function sendWhatsAppAlert3(order){
+
+let phone="919618653150";
 
 let message = `🚨 New Order - Raju's Dosa Club
 
@@ -465,5 +515,4 @@ loadData();
 </script>
 
 </body>
-
 </html>
