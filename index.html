@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raju's Dosa Club | Tirupati</title>
+
+<style>
+body{
+    margin:0;
+    font-family:'Segoe UI',Arial;
+    background:#f8f8f8;
+}
+
+/* HEADER */
+.header{
+    background:white;
+    padding:15px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+.logo{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #fc8019;
+}
+
+.header h1{margin:0;font-size:22px;}
+.header h3{margin:0;color:#666;font-weight:normal;font-size:14px;}
+
+/* INFO SECTION */
+.info{
+    background:white;
+    margin:15px;
+    padding:15px;
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+.rating{color:#388e3c;font-weight:bold;}
+
+.service-buttons button{
+    background:#fc8019;
+    margin:5px 5px 0 0;
+    color:white;
+    border:none;
+    padding:8px 15px;
+    border-radius:25px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* MENU */
+.menu{margin:20px;}
+.menu h2{text-align:center;}
+
+.menu-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+}
+
+.item{
+    background:white;
+    padding:15px;
+    border-radius:15px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    text-align:center;
+}
+
+.item img{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+.price{
+    color:#fc8019;
+    font-weight:bold;
+}
+
+button{
+    background:#fc8019;
+    color:white;
+    border:none;
+    padding:8px 15px;
+    border-radius:25px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* POPUP FORM */
+.popup{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    justify-content:center;
+    align-items:center;
+}
+
+.popup-content{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    width:320px;
+}
+
+.popup-content h3{
+    margin-top:0;
+}
+
+.popup-content label{
+    font-weight:bold;
+    display:block;
+    margin-top:8px;
+}
+
+input,select{
+    width:100%;
+    padding:8px;
+    margin-top:4px;
+    margin-bottom:8px;
+    border-radius:6px;
+    border:1px solid #ccc;
+}
+
+.footer{
+    background:#212121;
+    color:white;
+    text-align:center;
+    padding:15px;
+    margin-top:40px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+<img src="logo.JPG" class="logo">
+<div>
+<h1>Raju's Dosa Club</h1>
+<h3>రాజూస్ దోస క్లబ్</h3>
+</div>
+</div>
+
+<!-- INFO -->
+<div class="info">
+<p class="rating">⭐ 4.0 (1,923 Reviews)</p>
+<p><b>Address:</b> Tirupati</p>
+
+<div class="service-buttons">
+<button onclick="openDineIn()">Dine In</button>
+<button onclick="selectService('Take Away')">Take Away</button>
+</div>
+</div>
+
+<!-- MENU -->
+<div class="menu">
+<h2>🍽 Our Menu</h2>
+
+<div class="menu-grid">
+
+<div class="item"><img src="plain.JPG"><h4>Plain Dosa</h4><p class="price">₹40</p><button onclick="orderItem('Plain Dosa',40)">Order</button></div>
+<div class="item"><img src="masala.JPG"><h4>Masala Dosa</h4><p class="price">₹60</p><button onclick="orderItem('Masala Dosa',60)">Order</button></div>
+<div class="item"><img src="onion.JPG"><h4>Onion Dosa</h4><p class="price">₹55</p><button onclick="orderItem('Onion Dosa',55)">Order</button></div>
+<div class="item"><img src="ghee.JPG"><h4>Ghee Dosa</h4><p class="price">₹70</p><button onclick="orderItem('Ghee Dosa',70)">Order</button></div>
+<div class="item"><img src="idily.JPG"><h4>Idli</h4><p class="price">₹30</p><button onclick="orderItem('Idli',30)">Order</button></div>
+<div class="item"><img src="vada.JPG"><h4>Medu Vada</h4><p class="price">₹35</p><button onclick="orderItem('Medu Vada',35)">Order</button></div>
+<div class="item"><img src="upma.JPG"><h4>Upma</h4><p class="price">₹40</p><button onclick="orderItem('Upma',40)">Order</button></div>
+<div class="item"><img src="poori.JPG"><h4>Poori</h4><p class="price">₹50</p><button onclick="orderItem('Poori',50)">Order</button></div>
+<div class="item"><img src="panner.JPG"><h4>Paneer Dosa</h4><p class="price">₹90</p><button onclick="orderItem('Paneer Dosa',90)">Order</button></div>
+<div class="item"><img src="cheese.JPG"><h4>Cheese Dosa</h4><p class="price">₹85</p><button onclick="orderItem('Cheese Dosa',85)">Order</button></div>
+<div class="item"><img src="pizza.JPG"><h4>Pizza Dosa</h4><p class="price">₹110</p><button onclick="orderItem('Pizza Dosa',110)">Order</button></div>
+<div class="item"><img src="ragi.JPG"><h4>Ragi Dosa</h4><p class="price">₹80</p><button onclick="orderItem('Ragi Dosa',80)">Order</button></div>
+<div class="item"><img src="tea.JPG"><h4>Tea</h4><p class="price">₹15</p><button onclick="orderItem('Tea',15)">Order</button></div>
+<div class="item"><img src="coffee.JPG"><h4>Coffee</h4><p class="price">₹20</p><button onclick="orderItem('Coffee',20)">Order</button></div>
+<div class="item"><img src="badamamilk.JPG"><h4>Badam Milk</h4><p class="price">₹30</p><button onclick="orderItem('Badam Milk',30)">Order</button></div>
+<div class="item"><img src="masalavada.JPG"><h4>Masala vada</h4><p class="price">₹40</p><button onclick="orderItem('Masala vada',40)">Order</button></div>
+<div class="item"><img src="sambaridily.JPG"><h4>Sambar idily</h4><p class="price">₹55</p><button onclick="orderItem('Sambar idily',40)">Order</button></div>
+<div class="item"><img src="ravadosa.JPG"><h4>Rava Dosa</h4><p class="price">₹60</p><button onclick="orderItem('Rava Dosa',60)">Order</button></div>
+<div class="item"><img src="ravamasala.JPG"><h4>Rava Masala</h4><p class="price">₹65</p><button onclick="orderItem('Rava Masala',65)">Order</button></div>
+<div class="item"><img src="vegrice.JPG"><h4>Veg Rice</h4><p class="price">₹40</p><button onclick="orderItem('vegrice',40)">Order</button></div>
+<div class="item"><img src="lemonrice.JPG"><h4>Lemon Rice</h4><p class="price">₹40</p><button onclick="orderItem('Lemon Rice',40)">Order</button></div>
+<div class="item"><img src="curdrice.JPG"><h4>Curd Rice</h4><p class="price">₹40</p><button onclick="orderItem('Curd Rice',40)">Order</button></div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+© 2026 Raju's Dosa Club | Tirupati
+</div>
+
+<!-- TAKE AWAY POPUP -->
+<div class="popup" id="takeawayPopup">
+<div class="popup-content">
+<h3>Take Away Order</h3>
+
+<label>Name</label>
+<input type="text" id="ta_name">
+
+<label>Phone</label>
+<input type="text" id="ta_phone">
+
+<label>Address</label>
+<input type="text" id="ta_address">
+
+<label>Payment Mode</label>
+<select id="ta_payment">
+<option value="">Select Payment</option>
+<option>COD</option>
+<option>Online</option>
+</select>
+
+<button onclick="confirmTakeAway()">Confirm Order</button>
+<button onclick="closePopup('takeawayPopup')" style="background:gray;margin-top:8px;">Cancel</button>
+</div>
+</div>
+
+<!-- DINE IN POPUP -->
+<div class="popup" id="dineinPopup">
+<div class="popup-content">
+<h3>Dine In Reservation</h3>
+
+<label>Name</label>
+<input type="text" id="di_name">
+
+<label>Phone</label>
+<input type="text" id="di_phone">
+
+<label>No. of Seats</label>
+<select id="di_seats">
+<option value="">Select Seats</option>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+</select>
+
+<button onclick="confirmDineIn()">Reserve Table</button>
+<button onclick="closePopup('dineinPopup')" style="background:gray;margin-top:8px;">Cancel</button>
+</div>
+</div>
+
+<script>
+let selectedService="";
+let selectedItem="";
+let selectedPrice=0;
+
+function openDineIn(){
+document.getElementById("dineinPopup").style.display="flex";
+}
+
+function confirmDineIn(){
+let name=document.getElementById("di_name").value;
+let phone=document.getElementById("di_phone").value;
+let seats=document.getElementById("di_seats").value;
+
+if(!name||!phone||!seats){alert("All fields required");return;}
+
+let reservations=JSON.parse(localStorage.getItem("dosaClubReservations"))||[];
+reservations.push({customerName:name,phone:phone,seats:seats,time:new Date().toLocaleString()});
+localStorage.setItem("dosaClubReservations",JSON.stringify(reservations));
+
+alert("✅ Table Reserved Successfully!");
+closePopup("dineinPopup");
+}
+
+function selectService(service){
+selectedService=service;
+alert("Service Selected: "+service);
+}
+
+function orderItem(name,price){
+if(selectedService!=="Take Away"){alert("Select Take Away First");return;}
+selectedItem=name;
+selectedPrice=price;
+document.getElementById("takeawayPopup").style.display="flex";
+}
+
+function confirmTakeAway(){
+let customerName=document.getElementById("ta_name").value;
+let phone=document.getElementById("ta_phone").value;
+let address=document.getElementById("ta_address").value;
+let payment=document.getElementById("ta_payment").value;
+
+if(!customerName||!phone||!address||!payment){alert("All fields required");return;}
+
+let orders=JSON.parse(localStorage.getItem("dosaClubOrders"))||[];
+orders.push({customerName,phone,address,item:selectedItem,amount:selectedPrice,paymentMode:payment,time:new Date().toLocaleString()});
+localStorage.setItem("dosaClubOrders",JSON.stringify(orders));
+
+alert("✅ Order Placed Successfully!");
+closePopup("takeawayPopup");
+}
+
+function closePopup(id){
+document.getElementById(id).style.display="none";
+let inputs=document.querySelectorAll("#"+id+" input, #"+id+" select");
+inputs.forEach(i=>i.value="");
+}
+</script>
+
+</body>
+</html>
